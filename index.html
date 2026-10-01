@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Steve Ajuma | Full-Stack Developer & Fintech Systems Engineer</title>
+<meta name="description" content="Portfolio of Steve Ajuma (Sir Steve): full-stack developer building high-performance web and fintech interfaces.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#14181c; --panel:#1c2228; --line:#2a323a;
+  --text:#f4f7f5; --muted:#a3adb5; --accent:#00B849;
+  --sans:'Sora',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace;
+  --nav-h:68px;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h)}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.mono{font-family:var(--mono)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+
+/* Nav */
+.nav{position:sticky;top:0;z-index:10;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 24px;background:rgba(20,24,28,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.logo{display:grid;place-items:center;width:40px;height:40px;border:2px solid var(--accent);border-radius:10px;color:var(--accent);font-weight:600}
+.nav nav{display:flex;align-items:center;gap:28px;font-size:.95rem;color:var(--muted)}
+.nav nav a:not(.pill):hover{color:var(--text)}
+.pill{background:var(--accent);color:#04140a;font-weight:600;padding:8px 18px;border-radius:999px;transition:filter .2s}
+.pill:hover{filter:brightness(1.12)}
+.menu-btn{display:none;background:none;border:0;width:40px;height:40px;cursor:pointer;flex-direction:column;justify-content:center;gap:6px;align-items:center}
+.menu-btn span{width:22px;height:2px;background:var(--text);transition:transform .2s}
+.menu-btn[aria-expanded="true"] span:first-child{transform:translateY(4px) rotate(45deg)}
+.menu-btn[aria-expanded="true"] span:last-child{transform:translateY(-4px) rotate(-45deg)}
+
+/* Hero */
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;padding-top:88px;padding-bottom:88px}
+.role{color:var(--accent);font-size:.9rem;margin-bottom:16px}
+h1{font-size:clamp(2rem,4.6vw,3.4rem);line-height:1.12;letter-spacing:-.02em;font-weight:700}
+.sub{color:var(--muted);margin-top:20px;max-width:52ch}
+.tags{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.tags li{font-family:var(--mono);font-size:.78rem;color:var(--accent);border:1px solid rgba(0,184,73,.4);background:rgba(0,184,73,.08);padding:3px 10px;border-radius:999px}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.btn{display:inline-block;font:600 .95rem var(--sans);padding:12px 24px;border-radius:10px;border:1px solid transparent;cursor:pointer;transition:transform .15s,background .2s,border-color .2s}
+.btn.primary{background:var(--accent);color:#04140a}
+.btn.primary:hover{transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:var(--text);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--accent);color:var(--accent)}
+.btn.small{padding:8px 16px;font-size:.85rem;margin-top:auto;align-self:flex-start}
+
+/* Code editor: the hero's one memorable element */
+.editor{background:var(--panel);border:1px solid var(--line);border-radius:14px;box-shadow:0 0 60px rgba(0,184,73,.14);overflow:hidden}
+.editor-bar{display:flex;align-items:center;gap:7px;padding:12px 16px;border-bottom:1px solid var(--line)}
+.editor-bar i{width:11px;height:11px;border-radius:50%;background:#3a444d}
+.editor-bar span{margin-left:10px;font-size:.78rem;color:var(--muted)}
+.editor pre{padding:20px;font-size:.84rem;line-height:1.8;min-height:300px;white-space:pre-wrap;color:#d6dde2}
+.editor .k{color:var(--accent)} .editor .s{color:#9be3b5} .editor .c{color:#6b7782}
+.editor pre::after{content:"";display:inline-block;width:8px;height:1em;background:var(--accent);vertical-align:text-bottom;margin-left:2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+
+/* Sections & cards */
+.section{padding-top:72px;padding-bottom:72px}
+h2{font-size:clamp(1.5rem,3vw,2rem);letter-spacing:-.01em;margin-bottom:32px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:28px;display:flex;flex-direction:column;transition:transform .2s,border-color .2s}
+.card:hover{transform:translateY(-4px);border-color:var(--accent)}
+.card h3{font-size:1.1rem;margin-bottom:10px}
+.card p{color:var(--muted);font-size:.95rem}
+.card .tags{margin:20px 0}
+.card.project .tags{margin-bottom:24px}
+
+.contact{text-align:center}
+.contact .sub{margin-left:auto;margin-right:auto}
+.contact .actions{justify-content:center}
+
+.footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding-top:28px;padding-bottom:40px;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
+.footer a:hover{color:var(--accent)}
+
+.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);background:var(--accent);color:#04140a;font-weight:600;padding:10px 20px;border-radius:10px;opacity:0;pointer-events:none;transition:.25s}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* Responsive */
+@media(max-width:860px){
+  .hero{grid-template-columns:1fr;padding-top:56px;padding-bottom:56px}
+  .menu-btn{display:flex}
+  .nav nav{position:absolute;top:var(--nav-h);left:0;right:0;flex-direction:column;align-items:flex-start;gap:18px;padding:24px;background:var(--bg);border-bottom:1px solid var(--line);display:none}
+  .nav nav.open{display:flex}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important;animation:none!important}
+}
+</style>
+</head>
+<body>
+
+<header class="nav" id="top">
+  <a href="#top" class="logo" aria-label="Sir Steve home"><span class="mono">SS</span></a>
+  <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span></button>
+  <nav id="navLinks" aria-label="Main">
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+    <a href="mailto:ajumasteve71@gmail.com" class="pill">Get in Touch</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero wrap">
+    <div class="hero-copy">
+      <p class="role">Steve Ajuma · Full-Stack Developer & Fintech Systems Engineer</p>
+      <h1>Building High-Performance Digital Experiences &amp; Fintech Interfaces</h1>
+      <p class="sub">I build fast, clean web interfaces and the real-time data connections behind them, from landing pages to trading-style dashboards.</p>
+      <ul class="tags" aria-label="Core skills">
+        <li>HTML5</li><li>CSS3</li><li>JavaScript</li><li>React</li><li>Tailwind CSS</li><li>Python</li>
+      </ul>
+      <div class="actions">
+        <a href="#projects" class="btn primary">View Projects</a>
+        <a href="#contact" class="btn ghost">Contact Me</a>
+      </div>
+    </div>
+
+    <div class="editor" aria-hidden="true">
+      <div class="editor-bar"><i></i><i></i><i></i><span class="mono">stream.js</span></div>
+      <pre class="mono" id="code"></pre>
+    </div>
+  </section>
+
+  <section class="wrap section" id="skills">
+    <h2>Skills &amp; architecture</h2>
+    <div class="grid">
+      <article class="card">
+        <h3>Frontend development</h3>
+        <p>Responsive, accessible interfaces with minimal dependencies.</p>
+        <ul class="tags"><li>HTML5</li><li>CSS3</li><li>Vanilla JS</li><li>React</li><li>Tailwind CSS</li></ul>
+      </article>
+      <article class="card">
+        <h3>API integration</h3>
+        <p>Live data in the browser, from tick feeds to backend services.</p>
+        <ul class="tags"><li>WebSocket APIs</li><li>REST</li><li>Python</li></ul>
+      </article>
+      <article class="card">
+        <h3>Deployment pipelines</h3>
+        <p>Static-first builds shipped to the edge and kept fast.</p>
+        <ul class="tags"><li>Netlify</li><li>Git</li><li>Performance audits</li></ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="wrap section" id="projects">
+    <h2>Featured projects</h2>
+    <div class="grid">
+      <article class="card project">
+        <h3>SirDigits Landing Page</h3>
+        <p>A lightning-fast interface in pure HTML, CSS and Vanilla JS, with real-time tick feeds, a dark/light theme switcher and an interactive FAQ accordion.</p>
+        <ul class="tags"><li>HTML5</li><li>CSS3</li><li>Vanilla JS</li><li>WebSocket</li></ul>
+        <a href="#" class="btn primary small" data-demo="SirDigits">Live demo</a>
+      </article>
+      <article class="card project">
+        <h3>The Stack Co. Platform</h3>
+        <p>A tech investment firm platform and digital asset ecosystem with modular UI components, clean architectural layouts and company asset hubs.</p>
+        <ul class="tags"><li>Modular UI</li><li>CSS3</li><li>JavaScript</li></ul>
+        <a href="#" class="btn primary small" data-demo="The Stack Co.">Live demo</a>
+      </article>
+      <article class="card project">
+        <h3>ClippedWisdom Content Hub</h3>
+        <p>A digital branding and media channel that distills long-form knowledge into bite-sized video insights.</p>
+        <ul class="tags"><li>Branding</li><li>Media curation</li><li>Web</li></ul>
+        <a href="#" class="btn primary small" data-demo="ClippedWisdom">Live demo</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="wrap section contact" id="contact">
+    <h2>Let's build something</h2>
+    <p class="sub">Have a project, product or interface in mind? Send me an email.</p>
+    <div class="actions">
+      <a href="mailto:ajumasteve71@gmail.com" class="btn primary">Email Steve</a>
+      <button class="btn ghost" id="copyBtn" type="button">Copy email address</button>
+    </div>
+  </section>
+</main>
+
+<footer class="footer wrap">
+  <span>© <span id="year"></span> Steve Ajuma</span>
+  <a href="mailto:ajumasteve71@gmail.com">ajumasteve71@gmail.com</a>
+  <a href="#top">Back to top</a>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+(() => {
+  const EMAIL = 'ajumasteve71@gmail.com';
+  const $ = (id) => document.getElementById(id);
+
+  // Footer year
+  $('year').textContent = new Date().getFullYear();
+
+  // Mobile menu
+  const menuBtn = $('menuBtn');
+  const navLinks = $('navLinks');
+  const setMenu = (open) => {
+    navLinks.classList.toggle('open', open);
+    menuBtn.setAttribute('aria-expanded', String(open));
+  };
+  menuBtn.addEventListener('click', () => setMenu(!navLinks.classList.contains('open')));
+  navLinks.addEventListener('click', (e) => { if (e.target.closest('a')) setMenu(false); });
+
+  // Toast
+  const toast = $('toast');
+  let toastTimer;
+  const showToast = (msg) => {
+    toast.textContent = msg;
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove('show'), 2200);
+  };
+
+  // Copy email
+  $('copyBtn').addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(EMAIL);
+      showToast('Email address copied');
+    } catch {
+      showToast('Copy failed. Email: ' + EMAIL);
+    }
+  });
+
+  // Demo buttons: replace each href="#" in index.html with the real URL.
+  document.querySelectorAll('[data-demo]').forEach((link) => {
+    link.addEventListener('click', (e) => {
+      if (link.getAttribute('href') === '#') {
+        e.preventDefault();
+        showToast(link.dataset.demo + ' demo link not set yet');
+      }
+    });
+  });
+
+  // Hero code editor: types out once on load
+  const codeEl = $('code');
+  const lines = [
+    '<span class="c">// live tick feed</span>',
+    '<span class="k">const</span> ws = <span class="k">new</span> WebSocket(<span class="s">"wss://feed.example"</span>);',
+    '',
+    'ws.onmessage = (e) => {',
+    '  <span class="k">const</span> tick = JSON.parse(e.data);',
+    '  render(tick.symbol, tick.price);',
+    '};',
+    '',
+    '<span class="c">// deploy: git push → Netlify</span>'
+  ];
+  const html = lines.join('\n');
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    codeEl.innerHTML = html;
+    return;
+  }
+
+  // Type through the markup, emitting whole tags instantly
+  let i = 0;
+  const step = () => {
+    if (i >= html.length) return;
+    if (html[i] === '<') i = html.indexOf('>', i);
+    i++;
+    codeEl.innerHTML = html.slice(0, i);
+    setTimeout(step, 22);
+  };
+  step();
+})();
+</script>
+</body>
+</html>
